@@ -16,4 +16,29 @@ usuario.register= (req,res)=>{
       
    }
 
+
+   usuario.buscarnombre= (req,res)=>{
+      try{
+      bd.buscarnombreusuario(req,res);
+     
+     
+      }catch(e){
+     
+         console.log(e);
+      }
+   }
+
+   usuario.buscarid= (req,res)=>{
+      try{
+      bd.buscaridusuario(req,res);
+     
+     
+      }catch(e){
+     
+         console.log(e);
+      }
+        
+        
+     }
+
    module.exports= usuario
