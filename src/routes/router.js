@@ -19,6 +19,7 @@ router.get('/perfil',(req,res)=>{
 })
 
 router.post('/upload', (req, res) => {
+    res.send(req.file)
     res.send('uploaded')
 })
 

@@ -14,9 +14,9 @@ app.use(cors())
 
 /*const storage = multer.diskStorage({
   destination: path.join(__dirname, 'public/uploads')
-  //filename: 
+  filename: 
 })*/
-//app.use(multer({storage}).single('image'))
+app.use(multer({dest: path.join(__dirname, 'public/uploads')}).single('image'))
 
 app.use(session({
     secret:'xd',
