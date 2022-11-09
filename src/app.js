@@ -12,10 +12,10 @@ const multer = require('multer')
 
 app.use(cors())
 
-const storage = multer.diskStorage({
+/*const storage = multer.diskStorage({
   destination: path.join(__dirname, 'public/uploads')
   //filename: 
-})
+})*/
 app.use(multer({storage}).single('image'))
 
 app.use(session({
