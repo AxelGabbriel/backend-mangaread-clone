@@ -11,10 +11,6 @@ const multer = require('multer')
 //middlewares
 
 app.use(cors())
-
-multer.diskStorage({
-  destination: ''
-})
 app.use(multer().single('image'))
 
 app.use(session({
