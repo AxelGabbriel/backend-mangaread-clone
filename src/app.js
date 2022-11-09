@@ -5,12 +5,17 @@ const app = express()
 const {Strategy} =require('passport-local')
 const { LocalStrategy } = require('./strategies')
 const cors = require('cors')
-
+const multer = require('multer')
 
 
 //middlewares
 
 app.use(cors())
+
+multer.diskStorage({
+  destination: ''
+})
+app.use(multer().single('image'))
 
 app.use(session({
     secret:'xd',
