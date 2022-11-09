@@ -7,6 +7,7 @@ const { LocalStrategy } = require('./strategies')
 const cors = require('cors')
 const multer = require('multer')
 const path = require('path')
+const bodyParser = require('body-parser')
 
 
 //middlewares
