@@ -16,7 +16,7 @@ app.use(cors())
   destination: path.join(__dirname, 'public/uploads')
   //filename: 
 })*/
-app.use(multer({storage}).single('image'))
+//app.use(multer({storage}).single('image'))
 
 app.use(session({
     secret:'xd',
