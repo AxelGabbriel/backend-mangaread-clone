@@ -17,6 +17,11 @@ router.post('/login', passportAuth)
 router.get('/perfil',(req,res)=>{
     res.send('perfil')
 })
+
+router.post('/upload', (req, res) => {
+    res.send('uploaded')
+})
+
 //rutas usuario
 router.get('/buscar-usuario/:id_usuario',usuario.buscarid)
 router.get('/buscar-nombre/:username',usuario.buscarnombre)
