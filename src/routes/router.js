@@ -18,9 +18,9 @@ router.get('/perfil',(req,res)=>{
     res.send('perfil')
 })
 
-router.post('/upload', (req, res) => {
+/*router.post('/upload', (req, res) => {
     res.send('uploaded')
-})
+})*/
 
 //rutas usuario
 router.get('/buscar-usuario/:id_usuario',usuario.buscarid)
