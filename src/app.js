@@ -11,6 +11,9 @@ const path = require('path')
 
 //middlewares
 
+app.use(bodyParser.json());
+app.use(bodyParser({limit: '5mb'}));
+
 app.use(cors())
 
 /*const storage = multer.diskStorage({
