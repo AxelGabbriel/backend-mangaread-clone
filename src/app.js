@@ -14,11 +14,13 @@ const bodyParser = require('body-parser')
 
 app.use(cors())
 
-/*const storage = multer.diskStorage({
-  destination: path.join(__dirname, 'public/uploads')
-  filename: 
-})*/
-app.use(multer({dest: path.join(__dirname, 'public/uploads')}).single('image'))
+const storage = multer.diskStorage({
+  destination: path.join(__dirname, 'public/uploads'),
+  filename: (req, file, cb) => {
+    cb(null, new Date().getTime() + path.extname(file.originalname))
+  }
+});
+app.use(multer({storage}).single('image'))
 
 app.use(session({
     secret:'xd',
