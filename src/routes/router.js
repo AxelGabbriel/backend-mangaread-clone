@@ -18,10 +18,40 @@ router.get('/perfil',(req,res)=>{
     res.send('perfil')
 })
 
-router.post('/upload', (req, res) => {
-    console.log(req.file)
-    res.send(req.body)
+
+//Manejo de archivos
+const multer = require('multer')
+const sharp = require('sharp')
+
+const storage = multer.memoryStorage();
+
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype.startWith('image')){
+        cb(null, true)
+    }else {
+        cb('invalid image file', false)
+    }
+}
+const uploads = multer({storage, fileFilter})
+
+
+
+
+router.post('/upload',  uploads.single('manga'), async (req, res) => {
+    
+    const fotoBuffer = req.file.buffer
+    const imageInfo = await sharp(fotoBuffer).metadata()
+    console.log(imageInfo)
+    res.send('ok')
+
+
 })
+
+
+
+
+
+
 
 //rutas usuario
 router.get('/buscar-usuario/:id_usuario',usuario.buscarid)
