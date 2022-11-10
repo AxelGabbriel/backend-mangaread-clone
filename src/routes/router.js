@@ -26,8 +26,7 @@ const { uploadImage } = require('../controllers/uploadImage')
 const storage = multer.diskStorage({});
 
 const fileFilter = (req, file, cb) => {
-    const ayuda = JSON.parse(file)
-    if (ayuda.mimetype.startsWith('image')) {
+    if (file.mimetype.startsWith('image')) {
         cb(null, true)
     } else {
         cb('invalid image file', false)
