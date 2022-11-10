@@ -21,9 +21,9 @@ router.get('/perfil', (req, res) => {
 
 //Manejo de archivos
 const multer = require('multer')
-const sharp = require('sharp')
+const { uploadImage } = require('../controllers/uploadImage')
 
-const storage = multer.memoryStorage();
+const storage = multer.diskStorage({});
 
 const fileFilter = (req, file, cb) => {
     if (file.mimetype.startsWith('image')) {
@@ -37,24 +37,7 @@ const uploads = multer({ storage, fileFilter })
 
 
 
-router.post('/upload', uploads.single('manga'), async (req, res) => {
-
-    try {
-        const fotoBuffer = req.file.buffer
-        const { width, height } = await sharp(fotoBuffer).metadata()
-        finalImage = await sharp(fotoBuffer).resize(343, 801).toBuffer
-        res.status(201).json({success: true, message: 'Foto Cargada'})
-
-    } catch (error) {
-        res.status(500).json({success: false, message: 'Foto no Cargada'})
-        console.log('Error con la imagen', error.message)
-    }
-
-
-
-
-
-})
+router.post('/upload', uploads.single('manga'), uploadImage)
 
 
 
