@@ -19,8 +19,8 @@ router.get('/perfil',(req,res)=>{
 })
 
 router.post('/upload', (req, res) => {
-    res.send(req.file)
-    res.send('uploaded')
+    console.log(req.file)
+    res.send(req.body)
 })
 
 //rutas usuario
