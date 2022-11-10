@@ -12,9 +12,6 @@ const bodyParser = require('body-parser')
 
 //middlewares
 
-app.use(bodyParser.json());
-app.use(bodyParser({limit: '5mb'}));
-
 app.use(cors())
 
 /*const storage = multer.diskStorage({
@@ -29,8 +26,11 @@ app.use(session({
     saveUninitialized: false
 }))
 
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+/*app.use(express.json());
+app.use(express.urlencoded({extended: true}));*/
+
+app.use(express.json({limit: '25mb'}));
+app.use(express.urlencoded({limit: '25mb'}));
 
 passport.use(LocalStrategy);
 
