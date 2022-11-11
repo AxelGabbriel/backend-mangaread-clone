@@ -4,10 +4,23 @@ const session=require('express-session')
 const app = express()
 const {Strategy} =require('passport-local')
 const { LocalStrategy } = require('./strategies')
-
+const cors = require('cors')
+const multer = require('multer')
+const path = require('path')
+const bodyParser = require('body-parser')
 
 
 //middlewares
+
+app.use(cors())
+
+/*const storage = multer.diskStorage({
+  destination: path.join(__dirname, 'public/uploads'),
+  filename: (req, file, cb) => {
+    cb(null, new Date().getTime() + path.extname(file.originalname))
+  }
+});
+app.use(multer({storage}).single('image'))*/
 
 app.use(session({
     secret:'xd',
@@ -15,8 +28,11 @@ app.use(session({
     saveUninitialized: false
 }))
 
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+/*app.use(express.json());
+app.use(express.urlencoded({extended: true}));*/
+
+app.use(express.json({limit: '25mb'}));
+app.use(express.urlencoded({limit: '25mb'}));
 
 passport.use(LocalStrategy);
 
