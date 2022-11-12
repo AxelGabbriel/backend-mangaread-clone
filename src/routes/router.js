@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const usuario = require('../controllers/usuario')
-//const room= require('../controllers/room')
+const foto= require('../controllers/foto')
 //const puntaje=require('../controllers/puntaje')
 //const passport=require('passport')
 const { passportAuth } = require('../middlewares')
@@ -36,6 +36,12 @@ router.post('/upload', uploads.single('manga'), uploadImage)
 //rutas usuario
 router.get('/buscar-usuario/:id_usuario', usuario.buscarid)
 router.get('/buscar-nombre/:username', usuario.buscarnombre)
+
+//rutas para foto
+router.post('/crear-foto',foto.crear)
+router.get('/buscar-manga/:manga',foto.buscar)
+router.delete('/borrar-manga/:manga',foto.borrarmanga)
+router.delete('/borrar-capitulo/:capitulo',foto.borrarcapitulo)
 
 
 module.exports = router
