@@ -85,11 +85,13 @@ const crearfoto = async (req, res) => {
     url,
     manga,
     autor,
-    capitulo
+    capitulo,
+    image_id,
+    pagina
   } = req.body;
 
-  const result = await pool.query('INSERT INTO foto(url,manga,autor,capitulo) VALUES($1,$2,$3,$4)', [
-    url, manga, autor, capitulo])
+  const result = await pool.query('INSERT INTO foto(url,manga,autor,capitulo,image_id,pagina) VALUES($1,$2,$3,$4,$5,$6)', [
+    url, manga, autor, capitulo,image_id,pagina])
   console.log(result)
   res.json(result.rows)
 
