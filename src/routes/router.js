@@ -7,10 +7,6 @@ const foto= require('../controllers/foto')
 const  {passportAuth}  = require('../middlewares')
 
 
-
-
-
-
 //registro y login
 router.post('/registro',usuario.register)
 router.post('/login', passportAuth)
