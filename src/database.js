@@ -49,8 +49,49 @@ const  {
     res.json(response.rows)
    } 
 
-    module.exports={
-         crearusuario,buscarnombreusuario,buscaridusuario
+
+   const buscarmanga= async(req,res)=>{
+    const manga =req.params.manga
+    const response=await pool.query('SELECT* FROM foto WHERE  manga=$1',[manga])
+    console.log(response);
+    res.json(response.rows)}
+
+    const borrarmanga= async(req,res)=>{
+      const manga =req.params.manga
+      const response=await pool.query('DELETE FROM foto WHERE manga=$1',[manga])
+      console.log(response);
+      res.json(response.rows)
+  } 
+   
+  const borrarcapitulo= async(req,res)=>{
+    const capitulo =req.params.capitulo
+    const response=await pool.query('DELETE FROM foto WHERE capitulo=$1',[capitulo])
+    console.log(response);
+    res.json(response.rows)
+} 
+ 
+const crearfoto= async(req,res)=>{
+    
+  const  { 
+       url,
+       manga,
+       autor,
+       capitulo
+        }= req.body;
+
+        const result= await pool.query('INSERT INTO foto(url,manga,autor,capitulo) VALUES($1,$2,$3,$4)', [
+       url,manga,autor,capitulo ])
+        console.log(result)
+        res.json(result.rows)
+  
         
+      }
+
+
+
+
+    module.exports={
+         crearusuario,buscarnombreusuario,buscaridusuario,
+        buscarmanga,borrarmanga,borrarcapitulo,crearfoto
         
      }
