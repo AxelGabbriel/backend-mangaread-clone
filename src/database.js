@@ -59,7 +59,8 @@ const buscarmanga = async (req, res) => {
 
 const buscarcap = async (req, res) => {
   const manga = req.params.manga
-  const response = await pool.query('SELECT * FROM foto WHERE  manga=$1 AND capitulo=$2', [manga])
+  const capitulo = req.params.capitulo
+  const response = await pool.query('SELECT * FROM foto WHERE  manga=$1 AND capitulo=$2', [manga, capitulo])
   console.log(response);
   res.json(response.rows)
 }
