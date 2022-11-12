@@ -57,6 +57,13 @@ const buscarmanga = async (req, res) => {
   res.json(response.rows)
 }
 
+const buscarcap = async (req, res) => {
+  const manga = req.params.manga
+  const response = await pool.query('SELECT * FROM foto WHERE  manga=$1 AND capitulo=$2', [manga])
+  console.log(response);
+  res.json(response.rows)
+}
+
 const borrarmanga = async (req, res) => {
   const manga = req.params.manga
   const response = await pool.query('DELETE FROM foto WHERE manga=$1', [manga])
@@ -121,5 +128,5 @@ const crearseguido = async (req, res) => {
 module.exports = {
   crearusuario, buscarnombreusuario, buscaridusuario,
   buscarmanga, borrarmanga, borrarcapitulo, crearfoto,
-  buscarseguido, borrarseguido, crearseguido, 
+  buscarseguido, borrarseguido, crearseguido, buscarcap,
 }
