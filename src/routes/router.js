@@ -2,8 +2,7 @@ const express = require('express')
 const router = express.Router()
 const usuario = require('../controllers/usuario')
 const foto= require('../controllers/foto')
-//const puntaje=require('../controllers/puntaje')
-//const passport=require('passport')
+const sigueme=require('../controllers/seguimiento')
 const { passportAuth } = require('../middlewares')
 
 
@@ -42,6 +41,11 @@ router.post('/crear-foto',foto.crear)
 router.get('/buscar-manga/:manga',foto.buscar)
 router.delete('/borrar-manga/:manga',foto.borrarmanga)
 router.delete('/borrar-capitulo/:capitulo',foto.borrarcapitulo)
+
+//rutas para seguimiento
+router.post('/crear-seguido',sigueme.crear)
+router.get('/buscar-seguido/:id_usuario',sigueme.buscarid)
+router.delete('/borrar-seguido/:id_usuario',sigueme.borrarid)
 
 
 module.exports = router

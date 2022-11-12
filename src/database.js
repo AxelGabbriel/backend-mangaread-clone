@@ -87,11 +87,38 @@ const crearfoto= async(req,res)=>{
         
       }
 
+      const buscarseguido= async(req,res)=>{
+        const id_usuario =req.params.id_usuario
+        const response=await pool.query('SELECT* FROM seguimiento WHERE  id_usuario=$1',[id_usuario])
+        console.log(response);
+        res.json(response.rows)
+       } 
+       
+       const borrarseguido= async(req,res)=>{
+        const id_usuario =req.params.id_usuario
+        const response=await pool.query('DELETE FROM seguimiento WHERE id_resena=$1',[id_usuario])
+        console.log(response);
+        res.json(response.rows)
+    
+    } 
 
+    const crearseguido= async(req,res)=>{
+    
+      const  { 
+           id_usuario,seguido
+            }= req.body;
+    
+            const result= await pool.query('INSERT INTO seguimiento(id_usuario,seguido) VALUES($1,$2)', [
+           id_usuario,seguido])
+            console.log(result)
+            res.json(result.rows)
+      
+            
+          }
 
 
     module.exports={
          crearusuario,buscarnombreusuario,buscaridusuario,
-        buscarmanga,borrarmanga,borrarcapitulo,crearfoto
-        
+        buscarmanga,borrarmanga,borrarcapitulo,crearfoto,
+        buscarseguido,borrarseguido,crearseguido
      }
