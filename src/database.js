@@ -121,5 +121,5 @@ const crearseguido = async (req, res) => {
 module.exports = {
   crearusuario, buscarnombreusuario, buscaridusuario,
   buscarmanga, borrarmanga, borrarcapitulo, crearfoto,
-  buscarseguido, borrarseguido, crearseguido
+  buscarseguido, borrarseguido, crearseguido, 
 }
