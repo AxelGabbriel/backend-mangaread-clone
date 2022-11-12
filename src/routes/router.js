@@ -32,11 +32,6 @@ const uploads = multer({ storage, fileFilter })
 
 router.post('/upload', uploads.single('manga'), uploadImage)
 
-<<<<<<< HEAD
-//a
-=======
-
->>>>>>> parent of 053ef9d (rutas)
 
 //rutas usuario
 router.get('/buscar-usuario/:id_usuario', usuario.buscarid)
