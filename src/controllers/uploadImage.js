@@ -18,18 +18,16 @@ exports.uploadImage = async (req, res) => {
     //console.log(req.body)
     //console.log(req.file)
 
-    const { nombre, autor, capitulo } = req.body
+    const { nombre, autor, capitulo, pagina} = req.body
 
     try {
         const result = await cloudinary.uploader.upload(req.file.path, {
             public_id: `${new Date().getTime()}_manga`,
-            width: 343,
-            height: 801,
             crop: 'fill'
         })
         console.log('url: ' + result.url + ', nombre: ' + nombre + ', autor: ' + autor + ', capitulo: ' + capitulo)
-        const resultdb = await pool.query('INSERT INTO foto(url,manga,autor,capitulo) VALUES($1,$2,$3,$4)', [
-            result.url, nombre, autor, capitulo])
+        const resultdb = await pool.query('INSERT INTO foto(url,manga,autor,capitulo,image_id,pagina) VALUES($1,$2,$3,$4,$5,$6)', [
+            result.url, nombre, autor, capitulo, result.public_id, pagina])
         console.log('registro exitoso')
         res.json('registro exitoso' + resultdb.rows)
 
