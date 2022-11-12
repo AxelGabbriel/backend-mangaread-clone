@@ -6,7 +6,9 @@ exports.uploadImage = async (req, res) => {
     console.log(req.body)
     console.log(req.file)
 
-    /*try {
+    const {nombre, autor, capitulo} = req.body
+
+    try {
         const result = await cloudinary.uploader.upload(req.file.path, {
             public_id: `${new Date().getTime()}_manga`,
             width: 343,
@@ -19,7 +21,7 @@ exports.uploadImage = async (req, res) => {
     } catch (error) {
         res.status(500).json({success: false, message: 'Foto no Cargada'})
         console.log('Error con la imagen', error.message)
-    }*/
+    }
 
 
 
