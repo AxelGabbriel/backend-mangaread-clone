@@ -23,6 +23,9 @@ foto.borrarcapitulo = (req, res) => {
        try { bd.borrarcapitulo(req, res); } catch (e) { console.log(e); }
 }
 
+foto.mostrarmangas= (req, res) => {
+       try { bd.todosmanga(req, res); } catch (e) { console.log(e); }
+}
 
 
 

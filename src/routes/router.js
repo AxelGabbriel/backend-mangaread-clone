@@ -42,7 +42,7 @@ router.get('/buscar-manga/:manga',foto.buscar)
 router.get('/buscar-cap/:manga/:capitulo',foto.buscarcapitulo)
 router.delete('/borrar-manga/:manga',foto.borrarmanga)
 router.delete('/borrar-capitulo/:capitulo',foto.borrarcapitulo)
-
+router.get('/mostrar-mangas',foto.mostrarmangas)
 //rutas para seguimiento
 router.post('/crear-seguido',sigueme.crear)
 router.get('/buscar-seguido/:id_usuario',sigueme.buscarid)
