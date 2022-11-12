@@ -36,7 +36,7 @@ const uploads = multer({ storage, fileFilter })
 
 router.post('/upload', uploads.single('manga'), uploadImage)
 
-
+//a
 
 //rutas usuario
 router.get('/buscar-usuario/:id_usuario', usuario.buscarid)
