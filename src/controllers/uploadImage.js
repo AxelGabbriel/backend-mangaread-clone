@@ -3,8 +3,8 @@ const cloudinary = require('../helpers/imageUpload')
 
 exports.uploadImage = async (req, res) => {
 
-    console.log(req.body)
-    console.log(req.file)
+    //console.log(req.body)
+    //console.log(req.file)
 
     const {nombre, autor, capitulo} = req.body
 
@@ -15,7 +15,7 @@ exports.uploadImage = async (req, res) => {
             height: 801,
             crop: 'fill'
         })
-        console.log(result)
+        console.log('url: '+result.url+', nombre: '+nombre+', autor: '+autor+', capitulo: '+capitulo)
         res.status(201).json({success: true, message: 'Foto Cargada'})
 
     } catch (error) {
