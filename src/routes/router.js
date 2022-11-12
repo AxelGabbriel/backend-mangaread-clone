@@ -39,7 +39,7 @@ router.get('/buscar-nombre/:username', usuario.buscarnombre)
 //rutas para foto
 router.post('/crear-foto',foto.crear)
 router.get('/buscar-manga/:manga',foto.buscar)
-router.get('/buscar-cap/:manga/:capitulo',foto.buscar)
+router.get('/buscar-cap/:manga/:capitulo',foto.buscarcapitulo)
 router.delete('/borrar-manga/:manga',foto.borrarmanga)
 router.delete('/borrar-capitulo/:capitulo',foto.borrarcapitulo)
 

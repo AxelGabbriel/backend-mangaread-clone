@@ -15,7 +15,7 @@ foto.buscar = (req, res) => {
        try { bd.buscarmanga(req, res); } catch (e) { console.log(e); }
 }
 
-foto.buscarcap = (req, res) => {
+foto.buscarcapitulo = (req, res) => {
        try { bd.buscarcap(req, res); } catch (e) { console.log(e); }
 }
 
