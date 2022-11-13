@@ -119,7 +119,19 @@ const crearseguido = async (req, res) => {
     id_usuario, seguido
   } = req.body;
 
-  const result = await pool.query('INSERT INTO seguimiento(id_usuario,seguido) VALUES($1,$2)', [
+  const result = await pool.query(`
+  do $$ 
+  begin 
+  if exists 
+  (select seguido from seguimiento where seguido = $2 and id_usuario = $1) 
+  then 
+  Raise Notice '1'; 
+  else 
+  Raise Notice '0';
+  insert into seguimiento (id_usuario,seguido) values($1,$2);
+  end if; 
+  end $$
+  `, [
     id_usuario, seguido])
   console.log(result)
   res.json(result.rows)
