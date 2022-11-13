@@ -94,8 +94,6 @@ const crearfoto = async (req, res) => {
     url, manga, autor, capitulo,image_id,pagina])
   console.log(result)
   res.json(result.rows)
-
-
 }
 
 const buscarseguido = async (req, res) => {
@@ -119,7 +117,7 @@ const crearseguido = async (req, res) => {
     id_usuario, seguido
   } = req.body;
 
-  const result = await pool.query('do $$ begin if not exists (select seguido from seguimiento where id_usuario = $1 and seguido = $2) then insert into seguimiento (id_usuario,seguido) values($1,$2);end if; end $$', [
+  const result = await pool.query('INSERT INTO seguimiento(id_usuario,seguido) VALUES($1,$2)', [
     id_usuario, seguido])
   console.log(result)
   res.json(result.rows)
