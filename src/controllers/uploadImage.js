@@ -25,11 +25,11 @@ exports.uploadImage = async (req, res) => {
             public_id: `${new Date().getTime()}_manga`,
             crop: 'fill'
         })
-        console.log('url: ' + result.url + ', nombre: ' + nombre + ', autor: ' + autor + ', capitulo: ' + capitulo)
-        const resultdb = await pool.query('INSERT INTO foto(url,manga,autor,capitulo,image_id,pagina) VALUES($1,$2,$3,$4,$5,$6)', [
-            result.url, nombre, autor, capitulo, result.public_id, pagina])
+        console.log('url: ' + result.url + ', nombre: ' + nombre + ', autor: ' + autor + ', capitulo: ' + capitulo + ', pagina: ' + pagina)
+        //const resultdb = await pool.query('INSERT INTO foto(url,manga,autor,capitulo,image_id,pagina) VALUES($1,$2,$3,$4,$5,$6)', [
+        //    result.url, nombre, autor, capitulo, result.public_id, pagina])
         console.log('registro exitoso')
-        res.json('registro exitoso' + resultdb.rows)
+        //res.json('registro exitoso' + resultdb.rows)
 
 
 
