@@ -47,7 +47,7 @@ router.get('/mostrar-caps/:manga',foto.mostrarcaps)
 //rutas para seguimiento
 router.post('/crear-seguido',sigueme.crear)
 router.get('/buscar-seguido/:id_usuario',sigueme.buscarid)
-router.delete('/borrar-seguido/:id_usuario',sigueme.borrarid)
+router.delete('/borrar-seguido/:id_usuario/:seguido',sigueme.borrarid)
 
 
 module.exports = router

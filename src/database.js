@@ -105,7 +105,8 @@ const buscarseguido = async (req, res) => {
 
 const borrarseguido = async (req, res) => {
   const id_usuario = req.params.id_usuario
-  const response = await pool.query('DELETE FROM seguimiento WHERE id_resena=$1', [id_usuario])
+  const seguido = req.params.seguido
+  const response = await pool.query('DELETE FROM seguimiento WHERE id_usuario=$1 AND seguido=$2', [id_usuario, seguido])
   console.log(response);
   res.json(response.rows)
 
