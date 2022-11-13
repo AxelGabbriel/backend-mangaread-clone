@@ -133,6 +133,13 @@ const todosmanga = async (req, res) => {
   res.json(response.rows)
 }
 
+const todoscap = async (req, res) => {
+  const manga = req.params.manga
+  const response = await pool.query('select distinct capitulo from foto WHERE manga=$1', [manga])
+  console.log(response);
+  res.json(response.rows)
+}
+
 
 
 
@@ -140,7 +147,7 @@ module.exports = {
   crearusuario, buscarnombreusuario, buscaridusuario,
   buscarmanga, borrarmanga, borrarcapitulo, crearfoto,
   buscarseguido, borrarseguido, crearseguido, buscarcap,
-  todosmanga
+  todosmanga, todoscap
 
 
 

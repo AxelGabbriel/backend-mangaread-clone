@@ -27,6 +27,10 @@ foto.mostrarmangas= (req, res) => {
        try { bd.todosmanga(req, res); } catch (e) { console.log(e); }
 }
 
+foto.mostrarcaps= (req, res) => {
+       try { bd.todoscap(req, res); } catch (e) { console.log(e); }
+}
+
 
 
 
