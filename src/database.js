@@ -123,7 +123,7 @@ const crearseguido = async (req, res) => {
   do $$ 
   begin 
   if exists 
-  (select seguido from seguimiento where seguido = $2 and id_usuario = $1) 
+  (select seguido from seguimiento where id_usuario = $1 and seguido = $1) 
   then 
   Raise Notice '1'; 
   else 
