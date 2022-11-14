@@ -31,6 +31,18 @@ foto.mostrarcaps= (req, res) => {
        try { bd.todoscap(req, res); } catch (e) { console.log(e); }
 }
 
+foto.mostrarmangasb= (req, res) => {
+       try { bd.todosmangab(req, res); } catch (e) { console.log(e); }
+}
+
+foto.mostrarcapsb= (req, res) => {
+       try { bd.todoscapb(req, res); } catch (e) { console.log(e); }
+}
+
+foto.mostrarpagesb= (req, res) => {
+       try { bd.todospageb(req, res); } catch (e) { console.log(e); }
+}
+
 
 
 

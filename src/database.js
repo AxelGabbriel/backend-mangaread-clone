@@ -67,7 +67,9 @@ const buscarcap = async (req, res) => {
 
 const borrarmanga = async (req, res) => {
   const manga = req.params.manga
-  const response = await pool.query('DELETE FROM foto WHERE manga=$1', [manga])
+  const capitulo = req.params.capitulo
+  const pagina = req.params.pagina
+  const response = await pool.query('DELETE FROM foto WHERE manga=$1 and capitulo=$2 and pagina=$3', [manga, capitulo, pagina])
   console.log(response);
   res.json(response.rows)
 }
@@ -139,15 +141,34 @@ const todoscap = async (req, res) => {
   res.json(response.rows)
 }
 
+const todosmangab = async (req, res) => {
+  const autor = req.params.autor
+  const response = await pool.query('select distinct manga from foto where autor=$1', [autor])
+  console.log(response);
+  res.json(response.rows)
+}
 
+const todoscapb = async (req, res) => {
+  const manga = req.params.manga
+  const autor = req.params.autor
+  const response = await pool.query('select distinct capitulo from foto WHERE manga=$1 and autor=$2 order by capitulo', [manga, autor])
+  console.log(response);
+  res.json(response.rows)
+}
 
+const todospageb = async (req, res) => {
+  const manga = req.params.manga
+  const capitulo = req.params.capitulo
+  const autor = req.params.autor
+  const response = await pool.query('SELECT * FROM foto WHERE  manga=$1 AND capitulo=$2 and autor=$3 order by pagina', [manga, capitulo, autor])
+  console.log(response);
+  res.json(response.rows)
+}
 
 module.exports = {
   crearusuario, buscarnombreusuario, buscaridusuario,
   buscarmanga, borrarmanga, borrarcapitulo, crearfoto,
   buscarseguido, borrarseguido, crearseguido, buscarcap,
-  todosmanga, todoscap
-
-
+  todosmanga, todoscap, todosmangab, todoscapb, todospageb
 
 }
