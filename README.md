@@ -7,9 +7,8 @@ Proyecto #2 para Programacion de Dispositivos Moviles
 Universidad Rafael Urdaneta - Facultad de Ingenieria - Escuela de Ingenieria de Computacion
 
 Devs:
-
-Jairo Perez.
-Axel Miquilena.
+-Jairo Perez.
+-Axel Miquilena.
 
 API Rest desarrollada con Express.js en Node.js para el manejo de datos de la app GoriMangas. La API esta
 alojada en un servidor de Heroku. Se utiliza Bcrpt para poder encriptar ciertos datos. Multer que es un
