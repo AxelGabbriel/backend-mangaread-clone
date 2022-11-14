@@ -75,8 +75,9 @@ const borrarmanga = async (req, res) => {
 }
 
 const borrarcapitulo = async (req, res) => {
+  const manga = req.params.manga
   const capitulo = req.params.capitulo
-  const response = await pool.query('DELETE FROM foto WHERE capitulo=$1', [capitulo])
+  const response = await pool.query('DELETE FROM foto WHERE manga=$1 and capitulo=$2', [manga, capitulo])
   console.log(response);
   res.json(response.rows)
 }
