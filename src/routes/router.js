@@ -45,7 +45,7 @@ router.delete('/borrar-capitulo/:capitulo',foto.borrarcapitulo)
 router.get('/mostrar-mangas',foto.mostrarmangas)
 router.get('/mostrar-caps/:manga',foto.mostrarcaps)
 router.get('/mostrar-mangasb/:autor',foto.mostrarmangasb)
-router.get('/mostrar-caps/:manga/:autor',foto.mostrarcapsb)
+router.get('/mostrar-capsb/:manga/:autor',foto.mostrarcapsb)
 router.get('/mostrar-pagesb/:manga/:capitulo/:autor',foto.mostrarpagesb)
 //rutas para seguimiento
 router.post('/crear-seguido',sigueme.crear)
