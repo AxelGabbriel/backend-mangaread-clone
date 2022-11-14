@@ -60,7 +60,7 @@ const buscarmanga = async (req, res) => {
 const buscarcap = async (req, res) => {
   const manga = req.params.manga
   const capitulo = req.params.capitulo
-  const response = await pool.query('SELECT * FROM foto WHERE  manga=$1 AND capitulo=$2', [manga, capitulo])
+  const response = await pool.query('SELECT * FROM foto WHERE  manga=$1 AND capitulo=$2 order by pagina', [manga, capitulo])
   console.log(response);
   res.json(response.rows)
 }
@@ -134,7 +134,7 @@ const todosmanga = async (req, res) => {
 
 const todoscap = async (req, res) => {
   const manga = req.params.manga
-  const response = await pool.query('select distinct capitulo from foto WHERE manga=$1', [manga])
+  const response = await pool.query('select distinct capitulo from foto WHERE manga=$1 order by capitulo', [manga])
   console.log(response);
   res.json(response.rows)
 }
